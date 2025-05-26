@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wilson Sporting Goods</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Home/style.css" />
+    <!-- AOS CSS for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- font awesome link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --text-color: #333;
+      --border-color: #ddd;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+      --success-color: #27ae60;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f7fa;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .comparison-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 25px;
+      box-shadow: 0 5px 15px var(--shadow-color);
+      overflow-x: auto;
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #fff;
+      margin: 0 0 25px 0;
+      background-color: var(--primary-color);
+      padding: 15px 0;
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-selectors {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .product-selector {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .product-selector label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: var(--dark-color);
+      font-size: 0.95rem;
+    }
+
+    .product-selector select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 1rem;
+      background-color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .product-selector select:focus {
+      border-color: var(--secondary-color);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      table-layout: fixed;
+    }
+
+    th, td {
+      padding: 18px 15px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+
+    th {
+      background-color: var(--light-color);
+      font-weight: 600;
+      color: var(--dark-color);
+      width: 200px;
+      position: sticky;
+      left: 0;
+    }
+
+    td {
+      width: calc((100% - 200px) / 2);
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tbody tr:hover {
+      background-color: #f1f5f9;
+    }
+
+    .product-image {
+      width: 100%;
+      max-width: 180px;
+      height: auto;
+      max-height: 150px;
+      display: block;
+      margin: 0 auto 15px auto;
+      border: 1px solid var(--border-color);
+      padding: 5px;
+      background-color: #fff;
+      object-fit: contain;
+      border-radius: 4px;
+      transition: transform 0.3s ease;
+    }
+
+    .product-image:hover {
+      transform: scale(1.03);
+    }
+
+    .product-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-align: center;
+      color: var(--dark-color);
+    }
+
+    .product-price {
+      font-size: 1.2rem;
+      color: var(--accent-color);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .product-rating {
+      color: #f7c040;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 5px;
+    }
+
+    .product-rating .reviews {
+      color: #777;
+      font-size: 0.85rem;
+      margin-left: 5px;
+    }
+
+    .product-description {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    td[data-label="Image"], td[data-label="Actions"] {
+      text-align: center;
+    }
+
+    .add-to-cart-btn {
+      display: inline-block;
+      background-color: #fdcf21;
+      color: rgb(8, 6, 6);
+      padding: 12px 25px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-top: 10px;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      min-width: 140px;
+      box-shadow: 0 2px 5px rgba(8, 7, 7, 0.1);
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #219955;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .add-to-cart-btn:active {
+      transform: translateY(0);
+    }
+
+    .empty-cell {
+      color: #aaa;
+      font-style: italic;
+      text-align: center !important;
+    }
+
+    .empty-cell img {
+      display: none;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 992px) {
+      .comparison-container {
+        padding: 20px;
+      }
+      
+      td, th {
+        padding: 15px 10px;
+      }
+      
+      .product-image {
+        max-width: 150px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .comparison-container {
+        padding: 15px;
+        box-shadow: none;
+      }
+      
+      .product-selectors {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .product-selector {
+        width: 100%;
+      }
+      
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      
+      th {
+        position: static;
+      }
+    }
+
+    @media (max-width: 576px) {
+      body {
+        padding: 10px;
+      }
+      
+      h2 {
+        padding: 12px 0;
+        margin-bottom: 20px;
+      }
+      
+      .product-image {
+        max-width: 120px;
+        max-height: 120px;
+      }
+      
+      .add-to-cart-btn {
+        padding: 10px 15px;
+        min-width: 120px;
+        font-size: 0.9rem;
+      }
+      
+      th, td {
+        padding: 12px 8px;
+        font-size: 0.9rem;
+      }
+      
+      .product-name {
+        font-size: 1.1rem;
+      }
+      
+      .product-price {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      
+      thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+      
+      tr {
+        border: 1px solid var(--border-color);
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: white;
+        box-shadow: 0 2px 5px var(--shadow-color);
+      }
+      
+      td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 45%;
+        text-align: right;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+      
+      td:last-child {
+        border-bottom: 0;
+      }
+      
+      td:before {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        width: 40%;
+        transform: translateY(-50%);
+        padding-right: 10px;
+        white-space: normal;
+        content: attr(data-label);
+        font-weight: 600;
+        text-align: left;
+        color: var(--dark-color);
+        font-size: 0.9rem;
+      }
+      
+      td[data-label="Image"]:before,
+      td[data-label="Actions"]:before {
+        top: 10px;
+        left: 10px;
+        width: auto;
+        padding-right: 0;
+        position: relative;
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
+        transform: none;
+      }
+      
+      td[data-label="Image"],
+      td[data-label="Actions"] {
+        flex-direction: column;
+        text-align: center;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      
+      .product-image {
+        max-width: 100px;
+        margin: 0 auto 5px auto;
+      }
+      
+      .add-to-cart-btn {
+        width: 100%;
+        margin: 10px auto 5px auto;
+      }
+      
+      .empty-cell {
+        text-align: right !important;
+      }
+      
+      .product-rating {
+        justify-content: flex-end;
+      }
+    }
+    
+      .logo{
+        height: 50px;
+        width: 100px;
+      }
+
+    </style>
+  </style>
+</head>
+<body>
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="../Images/Banner/40491f85-a1b9-46cd-96a6-b58a4464cddb.png" alt="" class="logo">
+    </a>
+
+    <!-- Search Bar -->
+    <form class="d-flex mx-3 flex-grow-1">
+      <div class="input-group">
+        <input type="search" class="form-control" placeholder="Search items..." aria-label="Search" />
+        <button class="btn btn-warning" type="submit">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </form>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="../index.html">Home</a>
+        </li>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="../comparison/comparison.html">Comparison</a>
+        </li>
+
+        <!-- Mega Menu Start -->
+        <li class="nav-item dropdown position-static">
+          <a class="nav-link dropdown-toggle" href="#" id="productsMegaMenu" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Products
+          </a>
+          <div class="dropdown-menu dropdown-menu-dark w-100 mt-0 border-0 shadow-lg" aria-labelledby="productsMegaMenu"
+            style="left: 0; right: 0;">
+            <div class="container py-4">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="../nike.html"><h6 class="text-warning">Nike</h6></a>
+                  <ul class="list-unstyled">
+                    <li><a class="dropdown-item" href="../cricket.html">Cricket</a></li>
+                    <li><a class="dropdown-item" href="../football.html">Football</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-3">
+                  <a href="../jordan.html"><h6 class="text-warning">Jordan</h6></a>
+                  <ul class="list-unstyled">
+                    <li><a class="dropdown-item" href="../badminton.html">Badminton</a></li>
+                    <li><a class="dropdown-item" href="../tennis.html">Table Tennis</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-3">
+                  <a href="../puma.html"><h6 class="text-warning">Puma</h6></a>
+                  <ul class="list-unstyled">
+                    <li><a class="dropdown-item" href="../gym.html">Gym & Fitness</a></li>
+                    <li><a class="dropdown-item" href="../hockey.html">Hockey</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-3">
+                  <a href="../addidas.html"><h6 class="text-warning">Addidas</h6></a>
+                  <ul class="list-unstyled">
+                    <li><a class="dropdown-item" href="../cycle.html">Cycling</a></li>
+                    <li><a class="dropdown-item" href="../swimming.html">Swimming</a></li>
+                    
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <!-- Mega Menu End -->
+
+        <li class="nav-item">
+          <a class="nav-link" href="../Contact Us/Aboutus.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../Contact Us/contactUs.html">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <div class="comparison-container">
+    <h2>Product Comparison</h2>
+
+    <div class="product-selectors">
+      <div class="product-selector">
+        <label for="product1-select">Compare Product 1:</label>
+        <select id="product1-select">
+          <option value="">-- Select a Product --</option>
+        </select>
+      </div>
+      <div class="product-selector">
+        <label for="product2-select">Compare Product 2:</label>
+        <select id="product2-select">
+          <option value="">-- Select a Product --</option>
+        </select>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th id="product1-name-header">Product 1</th>
+          <th id="product2-name-header">Product 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Image</td>
+          <td data-label="Image"><img src="" class="product-image" id="product1-image" alt="Product 1 Image" /></td>
+          <td data-label="Image"><img src="" class="product-image" id="product2-image" alt="Product 2 Image" /></td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td id="product1-name" data-label="Name"></td>
+          <td id="product2-name" data-label="Name"></td>
+        </tr>
+        <tr>
+          <td>Price</td>
+          <td id="product1-price" data-label="Price"></td>
+          <td id="product2-price" data-label="Price"></td>
+        </tr>
+        <tr>
+          <td>Rating</td>
+          <td id="product1-rating" data-label="Rating"></td>
+          <td id="product2-rating" data-label="Rating"></td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td id="product1-description" data-label="Description"></td>
+          <td id="product2-description" data-label="Description"></td>
+        </tr>
+        <tr>
+          <td>Actions</td>
+          <td data-label="Actions"><button class="add-to-cart-btn" id="add-to-cart-btn-1" data-product-id="">Add to Cart</button></td>
+          <td data-label="Actions"><button class="add-to-cart-btn" id="add-to-cart-btn-2" data-product-id="">Add to Cart</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+  <script>
+    const productsJson = `[
+      {
+        "id": 1,
+        "name": "Puma Bag",
+        "image": "../Images/Brands/puma bags.png",
+        "description": "This backpack has dual front pockets, a laptop Sleeve, printedwebbing. It has a Capacity of 19L",
+        "rating": 4.8,
+        "reviews": 125,
+        "price": 6999
+      },
+      {
+        "id": 2,
+        "name": "Jordan Bag",
+        "image": "../Images/Brands/jordan bag.png",
+        "description": "This backpack has dual front pockets, a laptop Sleeve, printedwebbing, and a water bottle pack It has a Capacity of 16L",
+        "rating": 4.2,
+        "reviews": 88,
+        "price": 7699
+      },
+      {
+        "id": 3,
+        "name": "Nike Basketball",
+        "image": "../Images/Brands/NK+FLIGHT+-+FA24.png",
+        "description": "A good balance of features and price. Suitable for most users use indoor outdoor Gaming.",
+        "rating": 4.5,
+        "reviews": 55,
+        "price": 3150
+      },
+      {
+        "id": 4,
+        "name": "Addidas Basketball",
+        "image": "../Images/Brands/adidas ball.png",
+        "description": "A simple and functional item for basic needs to use indoor and outdoor sports.",
+        "rating": 3.9,
+        "reviews": 30,
+        "price": 3900
+      }
+    ]`;
+
+
+    let products = [];
+
+    function initializeComparison() {
+      try {
+        products = JSON.parse(productsJson);
+      } catch (e) {
+        console.error("Error parsing product data:", e);
+        document.querySelector(".comparison-container").innerHTML = "<p>Error loading product data.</p>";
+        return;
+      }
+
+      const product1Select = document.getElementById("product1-select");
+      const product2Select = document.getElementById("product2-select");
+
+      products.forEach(product => {
+        const option1 = document.createElement("option");
+        option1.value = product.id;
+        option1.textContent = product.name;
+        product1Select.appendChild(option1);
+
+        const option2 = document.createElement("option");
+        option2.value = product.id;
+        option2.textContent = product.name;
+        product2Select.appendChild(option2);
+      });
+
+      product1Select.addEventListener("change", handleDropdownChange);
+      product2Select.addEventListener("change", handleDropdownChange);
+      document.getElementById("add-to-cart-btn-1").addEventListener("click", handleAddToCart);
+      document.getElementById("add-to-cart-btn-2").addEventListener("click", handleAddToCart);
+
+      if (products.length >= 2) {
+        product1Select.value = products[0].id;
+        product2Select.value = products[1].id;
+        handleDropdownChange();
+      }
+    }
+
+    function handleDropdownChange() {
+      const product1Id = parseInt(document.getElementById("product1-select").value);
+      const product2Id = parseInt(document.getElementById("product2-select").value);
+
+      if (product1Id && product2Id && product1Id === product2Id) {
+        alert("Please select two different products to compare.");
+        return;
+      }
+
+      const product1 = products.find(p => p.id === product1Id) || null;
+      const product2 = products.find(p => p.id === product2Id) || null;
+
+      displayProductsInComparison(product1, product2);
+    }
+
+    function displayProductsInComparison(product1, product2) {
+      const p1Header = document.getElementById("product1-name-header");
+      const p1Image = document.getElementById("product1-image");
+      const p1Name = document.getElementById("product1-name");
+      const p1Price = document.getElementById("product1-price");
+      const p1Rating = document.getElementById("product1-rating");
+      const p1Description = document.getElementById("product1-description");
+      const p1AddToCartBtn = document.getElementById("add-to-cart-btn-1");
+
+      const p2Header = document.getElementById("product2-name-header");
+      const p2Image = document.getElementById("product2-image");
+      const p2Name = document.getElementById("product2-name");
+      const p2Price = document.getElementById("product2-price");
+      const p2Rating = document.getElementById("product2-rating");
+      const p2Description = document.getElementById("product2-description");
+      const p2AddToCartBtn = document.getElementById("add-to-cart-btn-2");
+
+      function fillProduct(p, header, image, name, price, rating, description, btn, cellPrefix) {
+        if (p) {
+          header.textContent = p.name;
+          image.src = p.image;
+          image.alt = `${p.name} Image`;
+          name.textContent = p.name;
+          price.textContent = `$${p.price.toFixed(2)}`;
+          rating.innerHTML = `${generateRatingHTML(p.rating)} <span class="reviews">(${p.reviews} reviews)</span>`;
+          description.textContent = p.description;
+          btn.setAttribute("data-product-id", p.id);
+          btn.style.display = "inline-block";
+          [image, name, price, rating, description, btn.parentElement].forEach(el => el.classList.remove("empty-cell"));
+        } else {
+          header.textContent = "Select Product";
+          image.src = "";
+          image.alt = "";
+          name.textContent = "—";
+          price.textContent = "—";
+          rating.innerHTML = "—";
+          description.textContent = "—";
+          btn.setAttribute("data-product-id", "");
+          btn.style.display = "none";
+          [image, name, price, rating, description, btn.parentElement].forEach(el => el.classList.add("empty-cell"));
+        }
+      }
+
+      fillProduct(product1, p1Header, p1Image, p1Name, p1Price, p1Rating, p1Description, p1AddToCartBtn);
+      fillProduct(product2, p2Header, p2Image, p2Name, p2Price, p2Rating, p2Description, p2AddToCartBtn);
+    }
+
+    function generateRatingHTML(rating) {
+      const totalStars = 5;
+      const fullStars = Math.floor(rating);
+      const halfStar = rating % 1 >= 0.5;
+      const emptyStars = totalStars - fullStars - (halfStar ? 1 : 0);
+      return `<span class="stars">${"★".repeat(fullStars)}${halfStar ? "☆" : ""}${"☆".repeat(emptyStars)}</span>`;
+    }
+
+    function handleAddToCart(event) {
+      const productId = event.target.getAttribute("data-product-id");
+      if (!productId) {
+        alert("Please select a product first.");
+        return;
+      }
+      const product = products.find(p => p.id === parseInt(productId));
+      if (product) {
+        alert(`${product.name} (ID: ${productId}) added to cart! (This is a demo alert)`);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", initializeComparison);
+  </script>
+   <!-- Footer -->
+    <footer class="bg-dark text-white pt-5 pb-4">
+      <div class="container">
+        <div class="row g-4">
+          <!-- About Column -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <h5 class="text-warning mb-4">All Sports Store</h5>
+            <p class="text-muted">
+              Your premier destination for premium sports gear and unmatched
+              service since 2010.
+            </p>
+            <div class="mt-4">
+              <a href="https://www.facebook.com/" class="text-white me-3"
+                ><i class="bi bi-facebook fs-5"></i
+              ></a>
+              <a href="https://www.twitter.com/" class="text-white me-3"
+                ><i class="bi bi-twitter fs-5"></i
+              ></a>
+              <a href="https://www.instagram.com/" class="text-white me-3"
+                ><i class="bi bi-instagram fs-5"></i
+              ></a>
+              <a href="https://www.linkedin.com/" class="text-white"
+                ><i class="bi bi-linkedin fs-5"></i
+              ></a>
+            </div>
+          </div>
+         
+
+
+          <!-- Categories Column -->
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h5 class="text-warning mb-4">Categories</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="cricket.html" class="text-white text-decoration-none">Cricket</a>
+              </li>
+              <li class="mb-2">
+                <a href="football.html" class="text-white text-decoration-none">Football</a>
+              </li>
+              <li class="mb-2">
+                <a href="gym.html" class="text-white text-decoration-none"
+                  >Gym & Fitness</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="badminton.html" class="text-white text-decoration-none"
+                  >Badminton</a
+                >
+              </li>
+              
+            </ul>
+          </div>
+           <!-- Brands Link Coulmn -->
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h5 class="text-warning mb-4">Brands</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="nike.html" class="text-white text-decoration-none"
+                  >Nike</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="jordan.html" class="text-white text-decoration-none"
+                  >Jordan</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="puma.html" class="text-white text-decoration-none">Puma</a>
+              </li>
+              <li>
+                <a href="addidas.html" class="text-white text-decoration-none"
+                  >Addidas</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Quick Links Column -->
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h5 class="text-warning mb-4">Quick Links</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="../Contact Us/Aboutus.html" class="text-white text-decoration-none"
+                  >About Us</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="../Contact Us/contactUs.html" class="text-white text-decoration-none"
+                  >Contact Us</a
+                >
+              </li>
+              
+            </ul>
+          </div>
+
+         
+
+            <h5 class="text-warning mt-4 mb-3">We Accept</h5>
+            <div class="d-flex flex-wrap">
+              <img
+                src="../Images/paymentImg/visa.png"
+                alt="Visa"
+                class="me-2 mb-2"
+                style="height: 30px"
+              />
+              <img
+                src="../Images/paymentImg/master_card.png"
+                alt="Mastercard"
+                class="me-2 mb-2"
+                style="height: 30px"
+              />
+              <img
+                src="../Images/paymentImg/american_express.png"
+                alt="Amex"
+                class="me-2 mb-2"
+                style="height: 30px"
+              />
+              <img
+                src="../Images/paymentImg/paypal.png"
+                alt="PayPal"
+                class="me-2 mb-2"
+                style="height: 30px"
+              />
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4 bg-secondary" />
+
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start">
+            <p class="mb-0">
+              &copy; 2025 Wilson. All rights reserved.
+            </p>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <p class="mb-0">Designed with by JINN👻💫</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  <!-- Bootstrap JS bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS for scroll animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="Home/app.js"></script>
+  </body>
+</html>
