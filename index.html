@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wilson Sporting Goods</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Home/style.css" />
+    <!-- AOS CSS for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- font awesome link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+
+
+
+
+    <style>
+      .logo{
+        height: 50px;
+        width: 100px;
+      }
+
+    </style>
+  </head>
+  
+  <body>
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top">
+      <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="Images/Banner/40491f85-a1b9-46cd-96a6-b58a4464cddb.png" alt="" class="logo">
+    </a>
+
+    <!-- Search Bar -->
+    <form class="d-flex mx-3 flex-grow-1">
+      <div class="input-group">
+        <input type="search" class="form-control" placeholder="Search items..." aria-label="Search" />
+        <button class="btn btn-warning" type="submit">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </form>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Home</a>
+        </li>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="comparison/comparison.html">Comparison</a>
+        </li>
+
+        <!-- Mega Menu Start -->
+        <li class="nav-item dropdown position-static">
+          <a class="nav-link dropdown-toggle" href="#" id="productsMegaMenu" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Products
+          </a>
+          <div class="dropdown-menu dropdown-menu-dark w-100 mt-0 border-0 shadow-lg" aria-labelledby="productsMegaMenu"
+            style="left: 0; right: 0;">
+            <div class="container py-4">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="nike.html"><h6 class="text-warning">Nike</h6></a>
+                  <ul class="list-unstyled">
+                    <li><a class="dropdown-item" href="cricket.html">Cricket</a></li>
+                    <li><a class="dropdown-item" href="football.html">Football</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-3">
+                  <a href="jordan.html"><h6 class="text-warning">Jordan</h6></a>
+                  <ul class="list-unstyled">
+                    <li><a class="dropdown-item" href="badminton.html">Badminton</a></li>
+                    <li><a class="dropdown-item" href="tennis.html">Table Tennis</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-3">
+                  <a href="puma.html"><h6 class="text-warning">Puma</h6></a>
+                  <ul class="list-unstyled">
+                    <li><a class="dropdown-item" href="gym.html">Gym & Fitness</a></li>
+                    <li><a class="dropdown-item" href="hockey.html">Hockey</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-3">
+                  <a href="addidas.html"><h6 class="text-warning">Addidas</h6></a>
+                  <ul class="list-unstyled">
+                    <li><a class="dropdown-item" href="cycle.html">Cycling</a></li>
+                    <li><a class="dropdown-item" href="swimming.html">Swimming</a></li>
+                    
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <!-- Mega Menu End -->
+
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Contact Us/contactUs.html">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <!-- Hero Carousel -->
+    <div
+      id="heroCarousel"
+      class="carousel slide carousel-fade"
+      data-bs-ride="carousel"
+    >
+      <!-- Indicators -->
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="0"
+          class="active"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="2"
+        ></button>
+      </div>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="Images/pexels-franco-monsalvo-252430633-29719219.jpg"
+            class="d-block w-100"
+            alt="Cricket Gear"
+          />
+          <div class="carousel-caption">
+            <div class="caption-container">
+              <h2 class="display-4 fw-bold">Elite Cricket Collection</h2>
+              <p class="lead">
+                Discover professional-grade bats, gloves, and more
+              </p>
+              <a href="#" class="btn btn-warning btn-lg mt-3">Shop Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="Images/pexels-victorfreitas-791763.jpg"
+            class="d-block w-100"
+            alt="Football Gear"
+          />
+          <div class="carousel-caption">
+            <div class="caption-container">
+              <h2 class="display-4 fw-bold">Ultimate Football Kits</h2>
+              <p class="lead">
+                High-performance boots, balls, and training gear
+              </p>
+              <a href="#" class="btn btn-warning btn-lg mt-3">Explore</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="Images/pexels-lorien-le-poer-trench-2148896580-30387500.jpg"
+            class="d-block w-100"
+            alt="Gym Gear"
+          />
+          <div class="carousel-caption">
+            <div class="caption-container">
+              <h2 class="display-4 fw-bold">Gym & Fitness Essentials</h2>
+              <p class="lead">
+                From dumbbells to yoga mats
+              </p>
+              <a href="#" class="btn btn-warning btn-lg mt-3"
+                >View Collection</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- Category Cards -->
+    <section class="py-5 container">
+      <h2 class="text-center mb-5" data-aos="fade-up">
+        Our Product Categories
+      </h2>
+      <div class="row g-4">
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+          <a href="cricket.html"><div class="card h-100">
+            <img
+              src="Images/Categories/Cricket.jpg"
+              class="card-img-top"
+              alt="Cricket"
+            />
+         
+          <div class="card-body">
+            <h5 class="card-title">Cricket</h5>
+            <p class="card-text">
+              Bats, gloves, pads, and protective wear for all levels.
+            </p>
+          </div>
+          </div>
+         </a>
+
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+          <a href="football.html"><div class="card h-100">
+            <img
+              src="Images/Categories/Football.jpg"
+              class="card-img-top"
+              alt="Football"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Football</h5>
+              <p class="card-text">
+                Balls, boots, kits, and training equipment.
+              </p>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+          <a href="gym.html"><div class="card h-100">
+            <img
+              src="Images/Categories/Gym.jpg"
+              class="card-img-top"
+              alt="Gym & Fitness"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Gym & Fitness</h5>
+              <p class="card-text">
+                Weights, mats, machines, and recovery tools.
+              </p>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+          <a href="badminton.html"><div class="card h-100">
+            <img
+              src="Images/Categories/Racket.jpg"
+              class="card-img-top"
+              alt="Badminton"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Badminton</h5>
+              <p class="card-text">
+                Rackets, shuttlecocks, nets, and accessories.
+              </p>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+          <a href="hockey.html"><div class="card h-100">
+            <img
+              src="Images/Categories/Hockey.jpg"
+              class="card-img-top"
+              alt="Hockey"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Hockey</h5>
+              <p class="card-text">
+                Sticks, balls, full gear for field and ice hockey.
+              </p>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+          <a href="tennis.html"><div class="card h-100">
+            <img
+              src="Images/Categories/T.Tennis.jpg"
+              class="card-img-top"
+              alt="Tennis"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Tennis</h5>
+              <p class="card-text">
+                Rackets, balls, grips, and court accessories.
+              </p>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+          <a href="swimming.html"><div class="card h-100">
+            <img
+              src="Images/Categories/Swiming.jpg"
+              class="card-img-top"
+              alt="Swimming"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Swimming</h5>
+              <p class="card-text">Goggles, suits, caps, and safety gear.</p>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+          <a href="cycle.html"><div class="card h-100">
+            <img
+              src="Images/Categories/Cycling.jpg"
+              class="card-img-top"
+              alt="Cycling"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Cycling</h5>
+              <p class="card-text">Helmets, lights, pumps, and accessories.</p>
+            </div>
+          </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Section -->
+    <section class="py-5 bg-white">
+      <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Brands</h2>
+        <div class="row g-4">
+          <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+            <a href="addidas.html"><div class="card h-100 product-card">
+              <img
+                src="Images/Categories/brandsimages/addidas.png"
+                class="card-img"
+                alt="Addidas"/>
+             
+            </div>
+   </a>
+          </div>
+          <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+            <a href="jordan.html"><div class="card h-100 product-card">
+              <img
+                src="Images/Categories/brandsimages/download.png"
+                class="card-img"
+                alt="Jordan"/>
+            </div>
+            </a>
+          </div>
+          <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+           <a href="nike.html"> <div class="card h-100 product-card">
+              <img
+                src="Images/Categories/brandsimages/697_nike.png"
+                class="card-img"
+                alt="Nike"
+              />
+              
+            </div>
+            </a>
+          </div>
+          <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+           <a href="puma.html"> <div class="card h-100 product-card">
+              <img
+                src="Images/Categories/brandsimages/puma-2.png"
+                class="card-img"
+                alt="Puma"
+              />
+            </div>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="container my-5">
+      <h2 class="text-center mb-4" data-aos="fade-up">Our Services</h2>
+      <div class="row text-center g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-box">
+            <i class="bi bi-truck"></i>
+            <h5>Free Delivery</h5>
+            <p>On orders above Rs. 2,000 nationwide.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-box">
+            <i class="bi bi-shield-lock"></i>
+            <h5>Secure Payment</h5>
+            <p>100% secure payment gateway.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-box">
+            <i class="bi bi-headset"></i>
+            <h5>24/7 Support</h5>
+            <p>Dedicated customer support team.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">
+          What Our Customers Say
+        </h2>
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="testimonial-box">
+              <p>
+                "Amazing quality and fast delivery. The cricket bat exceeded my
+                expectations!"
+              </p>
+              <h6>- Ali K.</h6>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="testimonial-box">
+              <p>
+                "Love the variety of fitness equipment. The dumbbells are
+                top-notch!"
+              </p>
+              <h6>- Sara N.</h6>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="testimonial-box">
+              <p>
+                "Great football gear and amazing customer service. Highly
+                recommend!"
+              </p>
+              <h6>- John D.</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-5 bg-white">
+      <div class="container">
+        <h2 class="text-center mb-5" data-aos="fade-up">Meet Our Players</h2>
+        <div class="row justify-content-center g-4">
+          <!-- Member 1 -->
+          <div
+            class="col-md-5 col-lg-4"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body text-center p-4">
+                <img
+                  src="Images/Facs/449321657_955177576400720_2413576074115619278_n.jpg"
+                  alt="Team Member"
+                  class="rounded-circle mb-3"
+                  style="
+                    width: 150px;
+                    height: 150px;
+                    object-fit: cover;
+                    border: 3px solid #f9a907;
+                  "
+                />
+                <h4 class="card-title">JINN👻💫..</h4>
+                <p class="card-text text-muted">Pubg MOBILE Player</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Member 2 -->
+          <div
+            class="col-md-5 col-lg-4"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body text-center p-4">
+                <img
+                  src="Images/Facs/477445356_122198805590239273_274997415704450038_n.jpg"
+                  alt="Team Member"
+                  class="rounded-circle mb-3"
+                  style="
+                    width: 150px;
+                    height: 150px;
+                    object-fit: cover;
+                    border: 3px solid #f2b80c;
+                  "
+                />
+                <h4 class="card-title">Chudail😈💫..</h4>
+                <p class="card-text text-muted">Pubg MOBILE Player</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter text-center mx-3" data-aos="fade-up">
+      <h3>Stay Updated!</h3>
+      <p>Subscribe to our newsletter for latest offers and new arrivals.</p>
+      <form class="d-flex justify-content-center">
+        <input
+          type="email"
+          class="form-control me-2"
+          placeholder="Enter your email"
+          required
+        />
+        <button class="btn btn-warning">Subscribe</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-5 pb-4">
+      <div class="container">
+        <div class="row g-4">
+          <!-- About Column -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <h5 class="text-warning mb-4">AllSports Store</h5>
+            <p class="text-muted">
+              Your premier destination for premium sports gear and unmatched
+              service since 2010.
+            </p>
+            <div class="mt-4">
+              <a href="https://www.facebook.com/" class="text-white me-3"
+                ><i class="bi bi-facebook fs-5"></i
+              ></a>
+              <a href="https://www.twitter.com/" class="text-white me-3"
+                ><i class="bi bi-twitter fs-5"></i
+              ></a>
+              <a href="https://www.instagram.com/" class="text-white me-3"
+                ><i class="bi bi-instagram fs-5"></i
+              ></a>
+              <a href="https://www.linkedin.com/" class="text-white"
+                ><i class="bi bi-linkedin fs-5"></i
+              ></a>
+            </div>
+          </div>
+         
+
+
+          <!-- Categories Column -->
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h5 class="text-warning mb-4">Categories</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="cricket.html" class="text-white text-decoration-none">Cricket</a>
+              </li>
+              <li class="mb-2">
+                <a href="football.html" class="text-white text-decoration-none">Football</a>
+              </li>
+              <li class="mb-2">
+                <a href="gym.html" class="text-white text-decoration-none"
+                  >Gym & Fitness</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="badminton.html" class="text-white text-decoration-none"
+                  >Badminton</a
+                >
+              </li>
+              
+            </ul>
+          </div>
+           <!-- Brands Link Coulmn -->
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h5 class="text-warning mb-4">Brands</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="nike.html" class="text-white text-decoration-none"
+                  >Nike</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="jordan.html" class="text-white text-decoration-none"
+                  >Jordan</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="puma.html" class="text-white text-decoration-none">Puma</a>
+              </li>
+              <li>
+                <a href="addidas.html" class="text-white text-decoration-none"
+                  >Addidas</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Quick Links Column -->
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h5 class="text-warning mb-4">Quick Links</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="Contact Us/Aboutus.html" class="text-white text-decoration-none"
+                  >About Us</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="Contact Us/contactUs.html" class="text-white text-decoration-none"
+                  >Contact Us</a
+                >
+              </li>
+              
+            </ul>
+          </div>
+
+         
+
+            <h5 class="text-warning mt-4 mb-3">We Accept</h5>
+            <div class="d-flex flex-wrap">
+              <img
+                src="Images/paymentImg/visa.png"
+                alt="Visa"
+                class="me-2 mb-2"
+                style="height: 30px"
+              />
+              <img
+                src="Images/paymentImg/master_card.png"
+                alt="Mastercard"
+                class="me-2 mb-2"
+                style="height: 30px"
+              />
+              <img
+                src="Images/paymentImg/american_express.png"
+                alt="Amex"
+                class="me-2 mb-2"
+                style="height: 30px"
+              />
+              <img
+                src="Images/paymentImg/paypal.png"
+                alt="PayPal"
+                class="me-2 mb-2"
+                style="height: 30px"
+              />
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4 bg-secondary" />
+
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start">
+            <p class="mb-0">
+              &copy; 2025 Wilson. All rights reserved.
+            </p>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <p class="mb-0">Designed with by JINN👻💫</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS for scroll animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="Home/app.js"></script>
+  </body>
+</html>
